@@ -98,13 +98,28 @@ function produtos2(produto: Produto) {
   console.log(produto + " mais teste 2");
 }
 
-produtos("café")
-produtos2("leite")
+produtos("café");
+produtos2("leite");
 
 //Type inference
 //não preciso definir os tipos pois ele sabe
-let mensagem= "Hello"
+let mensagem = "Hello";
 
 //Type Assertion
 //const inputName= document.querySelector("#name") as HTMLInputElement | null
 //inputName.value
+
+//--------------------------------------------------------------------------//
+//Tipando objetos
+
+//Interfaces
+type UF = "SP" | "DF" | "PR";
+interface User {
+  name: string;
+  address: { city: string; UF: UF };
+  sayHello: () => void;
+}
+
+function showCity(user: User) {
+  return user.address.city;
+}
