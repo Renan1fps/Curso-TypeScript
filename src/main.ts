@@ -110,7 +110,7 @@ let mensagem = "Hello";
 //inputName.value
 
 //--------------------------------------------------------------------------//
-//Tipando objetos
+//>>>>>>Tipando objetos
 
 //Interfaces
 type UF = "SP" | "DF" | "PR";
@@ -124,7 +124,7 @@ function showCity(user: User) {
   return user.address.city;
 }
 
-//Propriedades opcionais
+//>>>>>>Propriedades opcionais
 //basta acrescenta a interrogação exemplo:
 
 interface Loja {
@@ -144,14 +144,38 @@ interface Loja {
 
 //o que podemos fazer para contornar isso é tratar o erro como ex baixo:
 
-function showUf(loja: Loja){
-  return loja.address ? loja.address.UF : "Não existe UF"
+function showUf(loja: Loja) {
+  return loja.address ? loja.address.UF : "Não existe UF";
 }
 
 // reduzindo ainda mais o codigo podemos ter o seguinte resultado
 
-function showUf2(loja: Loja){
-  return loja.address?.city
+function showUf2(loja: Loja) {
+  return loja.address?.city;
+}
+//ele está vendo se existe address, caso exista ele me retona a city caso não me retona undefined
+
+//>>>>>>Readonly
+//impede que depois de criado algo seja alterado bastando apenas colocar readonly
+
+interface People {
+ readonly name: string;
+  age: number;
 }
 
-//ele está vendo se existe address, caso exista ele me retona a city caso não me retona undefined
+//sem readonly
+let user: People = {
+  name: "Renan",
+  age: 21,
+};
+
+//user.name= "jose" não da erro
+
+//com readonly
+
+let user2:People={
+  name: "Renan",
+  age: 21
+}
+
+//user2.name="jdjd" dará erro
