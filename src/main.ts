@@ -75,11 +75,28 @@ console.log(corWhite);
 let age: number | string;
 
 age = 20;
-age="vinte"
+age = "vinte";
 
 //outro exemplo
 //estou dizendo que ele aceitara qualquer um dos dois
-function showPet(pet: "cat"| "dog"){
-  console.log(pet)
+function showPet(pet: "cat" | "dog") {
+  console.log(pet);
 }
-showPet("dog")
+showPet("dog");
+
+//Aliases
+//para não repetir codigo eu crio um tipo e passo em variaveis ou parametro de funções ex:
+
+//uma função que recebe parametros iguais mas fazem coisas diferentes
+
+type Produto = "café" | "leite" | "açucar";
+function produtos(produto: Produto) {
+  console.log(produto);
+}
+
+function produtos2(produto: Produto) {
+  console.log(produto + " mais teste 2");
+}
+
+produtos("café")
+produtos2("leite")
