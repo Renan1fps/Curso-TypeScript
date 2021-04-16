@@ -159,7 +159,7 @@ function showUf2(loja: Loja) {
 //impede que depois de criado algo seja alterado bastando apenas colocar readonly
 
 interface People {
- readonly name: string;
+  readonly name: string;
   age: number;
 }
 
@@ -173,9 +173,39 @@ let user: People = {
 
 //com readonly
 
-let user2:People={
+let user2: People = {
   name: "Renan",
-  age: 21
-}
+  age: 21,
+};
 
 //user2.name="jdjd" dará erro
+
+//>>>>>>Extends
+
+interface Veiculo {
+  rodas: number;
+  acelerar: () => void;
+  frear?: () => void;
+}
+
+interface Moto extends Veiculo {
+  capacete: boolean;
+  empinar: () => void;
+}
+//mto herdara de veiculo metodos e atributos
+
+//>>>>>>Implements
+//posso implementas varias interface separando por virgula
+//*sou obrigado a implementar atributos e metodos depois de herdar a não ser que sejam opcionais
+class Carro implements Veiculo {
+  rodas: number;
+  constructor(rodas: number) {
+    this.rodas = rodas;
+  }
+  acelerar() {
+    console.log("acelerando");
+  }
+  frear() {
+    console.log("freiando");
+  }
+}
