@@ -54,17 +54,32 @@ valores = [1, 2, 3, 4, 5, 6];
 
 //Tuple
 //Um array quando sabemos a quantidade de itens que teremos e o tipo de cada um
-let itens: [number, string]
-itens=[1,"hello"]
+let itens: [number, string];
+itens = [1, "hello"];
 
 //Enum
 //é um conjunto de chaves e valores ex:
-enum Colors{
-    white="#fff",
-    black= "#000"
+enum Colors {
+  white = "#fff",
+  black = "#000",
 }
 
 //ex de uso: quero uma cor mas não lembro seu valor, então é só fazer assim:
 
-let corWhite: Colors= Colors.black
-console.log(corWhite)
+let corWhite: Colors = Colors.black;
+console.log(corWhite);
+
+//Union
+//para caso eu queira passar um valor numerico mas ele aceite por extenso
+//*se aprlica para outros tipos de variaveis
+let age: number | string;
+
+age = 20;
+age="vinte"
+
+//outro exemplo
+//estou dizendo que ele aceitara qualquer um dos dois
+function showPet(pet: "cat"| "dog"){
+  console.log(pet)
+}
+showPet("dog")
