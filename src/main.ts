@@ -212,22 +212,32 @@ class Carro implements Veiculo {
 
 //>>>>>>Pick e omit
 /*Pick serve para pegar propriedades de uma interface ou outro tipo
-e criar outro tipo de interface ex: */ 
-interface Post{
-  id: number
-  title: string
-  description: string
+e criar outro tipo de interface ex: */
+interface Post {
+  id: number;
+  title: string;
+  description: string;
 }
 
 //quero pegar alguns elementos de post e criar um novo tipo ex:
-type PostPreview= Pick<Post, "id" | "title">
+type PostPreview = Pick<Post, "id" | "title">;
 
-let post: PostPreview
+let post: PostPreview;
 //post.id
 //post.title
 
 //Omit faz o inverso de Pick ( no caso ele omite o que eu passar e pega o restante)
-type PostPreview2= Omit<Post, "id" | "title">
+type PostPreview2 = Omit<Post, "id" | "title">;
 
-let post2: PostPreview2
+let post2: PostPreview2;
 //post2.description
+
+//caso eu queira instalar uma biblioteca de terceiros e ela não tenha typescript basta fazer: npm i @types/nomedependencia -D
+//para importa é sa seguinte forma: import nomeImport from "nomeImport"
+
+import Simplebar from "simplebar";
+
+const content = document.querySelector("#content") as HTMLElement;
+
+const simplebar = new Simplebar(content, { autoHide: true });
+
