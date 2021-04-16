@@ -105,3 +105,6 @@ produtos2("leite")
 //não preciso definir os tipos pois ele sabe
 let mensagem= "Hello"
 
+//Type Assertion
+//const inputName= document.querySelector("#name") as HTMLInputElement | null
+//inputName.value
