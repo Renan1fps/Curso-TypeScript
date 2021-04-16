@@ -123,3 +123,35 @@ interface User {
 function showCity(user: User) {
   return user.address.city;
 }
+
+//Propriedades opcionais
+//basta acrescenta a interrogação exemplo:
+
+interface Loja {
+  name: string;
+  address?: {
+    city: string;
+    UF: UF;
+  };
+}
+
+//mas se eu quiser usar esse propriedade em outro lugar é provavel que de erro pois ele pode estar vazio e não conseguimos compilar ex :
+
+/*function showUf(loja: Loja){
+  return loja.address.UF
+}
+*/
+
+//o que podemos fazer para contornar isso é tratar o erro como ex baixo:
+
+function showUf(loja: Loja){
+  return loja.address ? loja.address.UF : "Não existe UF"
+}
+
+// reduzindo ainda mais o codigo podemos ter o seguinte resultado
+
+function showUf2(loja: Loja){
+  return loja.address?.city
+}
+
+//ele está vendo se existe address, caso exista ele me retona a city caso não me retona undefined
