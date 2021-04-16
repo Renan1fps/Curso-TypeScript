@@ -100,3 +100,8 @@ function produtos2(produto: Produto) {
 
 produtos("café")
 produtos2("leite")
+
+//Type inference
+//não preciso definir os tipos pois ele sabe
+let mensagem= "Hello"
+
