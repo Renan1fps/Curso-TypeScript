@@ -3,29 +3,50 @@ import express, { request, response } from "express";
 const app = express();
 app.use(express.json());
 
+interface User {
+  name: string;
+  email: string;
+  id: string;
+}
+
+const users: User[] = [];
+
 app.get("/users", (request, response) => {
-  return response.json({ message: "Pegando usuarios" });
-});
-
-app.get("/users/:id", (request, response) => {
-    const id = request.query;
-    console.log(id)
-    return response.json("finish")
-  });
-
-app.post("/users/1", (request, response) => {
-  const { id, name, age } = request.body;
-  return response.json({ id: id, name: name, age: age });
+  return response.json(users);
 });
 
 app.post("/users", (request, response) => {
-  return response.json({ message: "Criando usuario" });
+  const { id, name, email } = request.body;
+  const user = { id: id, name: name, email: email };
+  users.push(user);
+  return response.json(user);
 });
-app.put("/users", (request, response) => {
-  return response.json({ message: "Atualizando usuario" });
+app.put("/users/:id", (request, response) => {
+  const id = request.params.id;
+  const { name, email } = request.body;
+  const userIndex = users.findIndex((user) =>  user.id === id);
+  if (userIndex != undefined) {
+    const user = { id, name, email };
+    users[userIndex] = user;
+    return response.json(user);
+  } else {
+    response.status(404).json({ error: "User not found" });
+  }
 });
-app.delete("/users", (request, response) => {
-  return response.json({ message: "Deletenado usuario" });
+app.delete("/users/:id", (request, response) => {
+  const { id } = request.params;
+  const userIndex = users.findIndex((user) => user.id === id);
+  if (userIndex != undefined) {
+    users.splice(userIndex, 1);
+    return response.status(204).send()
+  } else {
+    response.status(404).json({ error: "User not found" });
+  }
+});
+app.get("/users/:id", (request, response) => {
+  const id = request.params
+  console.log(id);
+  return response.json("finish");
 });
 
 app.listen(8080, () => {
